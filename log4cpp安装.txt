@@ -1,0 +1,38 @@
+ 
+ 
+ 1.下载log4cpp-1.1.1.tar.gz    
+          
+ 2. 安装：先将log4cpp-1.1.1.tar.gz拖入用户主目录(~),
+    然后再执行以下步骤:
+    
+	  $ tar zxvf log4cpp-1.1.1.tar.gz 
+
+	  $ cd ~/log4cpp/
+    $ ./configure
+    $ make
+    $ make check
+    $ sudo make install
+
+          这里已经安装成功.
+	  
+	  默认lib库路径是 ： /usr/local/lib/
+          
+	  默认头文件的位置： /usr/local/include/log4cpp        
+              
+ 3. 使用:
+	3.1 编译使用log4cpp库的CPP文件时，要加上库文件，才能顺利的编译通过，如下示例
+	
+	$ g++ log4test.cpp -llog4cpp -lpthread
+	
+	3.2 运行时，如若提示缺少log4cpp库文件，表示找不到log4cpp的动态库，需要进行以下设置
+	以管理员身份登录终端，然后执行以下操作：
+
+	a. $ sudo vim /etc/ld.so.conf
+	
+	b. 在打开的文件末尾另起一行添加动态库log4cpp的路径(这里是/usr/local/lib)，然后保存退出；
+	   执行命令ldconfig使设置生效即可。
+	c. $ sudo ldconfig   //更新库文件的缓存信息
+	
+
+ 4. log4cpp学习
+	http://blog.csdn.net/liuhong135541/article/category/1496383
