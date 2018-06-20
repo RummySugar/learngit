@@ -1,0 +1,46 @@
+ ///
+ /// @file    myVector.h
+ /// @author  beiun(a308033@163.com)
+ /// @date    2018-06-20 16:38:03
+ ///
+ 
+#ifndef __MYVECTOR_H__
+#define __MYVECTOR_H__
+#include <memory>
+#include <iostream>
+using std::cout;
+using std::endl;
+using std::allocator;
+
+template <typename T>
+class Vector
+{
+public:
+	typedef T * iterator;
+	typedef const T * const_iterator;
+	Vector();
+	~Vector();
+	iterator begin()
+	{
+		return _start;
+	}
+	iterator end()
+	{
+		return _finish;
+	}
+	void push_back(const T & t);
+	void pop_back();
+	size_t size() const;
+	size_t capacity();
+
+private:
+	void reallocator();
+private:
+	static allocator<T> _alloc;
+	T * _start;
+	T * _finish;
+	T * _end_of_storage;
+};
+ 
+#include "vector.Txx"
+#endif
